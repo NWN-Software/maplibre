@@ -5,7 +5,6 @@ namespace NWNSoftware\Maplibre;
 use Filament\Support\Assets\AlpineComponent;
 use Filament\Support\Assets\Asset;
 use Filament\Support\Assets\Css;
-use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Facades\FilamentIcon;
 use Illuminate\Filesystem\Filesystem;

@@ -7,7 +7,6 @@ use Filament\Panel;
 
 class MaplibrePlugin implements Plugin
 {
-
     public ?string $style = null;
 
     public ?string $locale = null;

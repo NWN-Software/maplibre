@@ -2,17 +2,16 @@
 
 namespace NWNSoftware\Maplibre\Widgets;
 
-use Filament\Actions\Action;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Widgets\Widget;
 
-class MapLibreWidget extends Widget implements HasForms, HasActions
+class MapLibreWidget extends Widget implements HasActions, HasForms
 {
-    use InteractsWithForms;
     use InteractsWithActions;
+    use InteractsWithForms;
 
     protected static string $view = 'maplibre::maplibre';
 
