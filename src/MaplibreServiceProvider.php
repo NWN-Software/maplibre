@@ -102,9 +102,8 @@ class MaplibreServiceProvider extends PackageServiceProvider
     protected function getAssets(): array
     {
         return [
-            // AlpineComponent::make('maplibre', __DIR__ . '/../resources/dist/components/maplibre.js'),
+            AlpineComponent::make('maplibre-alpine', __DIR__ . '/../resources/dist/maplibre.js'),
             Css::make('maplibre-styles', __DIR__ . '/../resources/dist/maplibre.css'),
-            Js::make('maplibre-scripts', __DIR__ . '/../resources/dist/maplibre.js'),
         ];
     }
 
