@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace NWNSoftware\Maplibre\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class MaplibreCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'maplibre';
 
     public $description = 'My command';
 

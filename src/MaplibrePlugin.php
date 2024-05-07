@@ -1,15 +1,15 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace NWNSoftware\Maplibre;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 
-class SkeletonPlugin implements Plugin
+class MaplibrePlugin implements Plugin
 {
     public function getId(): string
     {
-        return 'skeleton';
+        return 'maplibre';
     }
 
     public function register(Panel $panel): void
