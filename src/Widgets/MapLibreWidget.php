@@ -57,11 +57,13 @@ class MapLibreWidget extends Widget implements HasActions, HasForms
         return Actions\ViewAction::make();
     }
 
-    public function getInfolistSchema(): array {
+    public function getInfolistSchema(): array
+    {
         return [];
     }
 
-    public function getFormSchema(): array {
+    public function getFormSchema(): array
+    {
         return [];
     }
 }

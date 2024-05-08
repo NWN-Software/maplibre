@@ -132,8 +132,8 @@ class MarkerData implements Arrayable
         return $this;
     }
 
-
-    public function toArray(): array {
+    public function toArray(): array
+    {
         return [
             'id' => $this->id,
             'coordinates' => [$this->longitude, $this->latitude],
@@ -142,7 +142,7 @@ class MarkerData implements Arrayable
             ...$this->url ? ['url' => $this->url, 'shouldOpenUrlInNewTab' => $this->shouldOpenUrlInNewTab] : [],
             ...$this->popupTitle ? ['popupTitle' => $this->popupTitle] : [],
             ...$this->popupDescription ? ['popupDescription' => $this->popupDescription] : [],
-            ...$this->extraProperties
+            ...$this->extraProperties,
         ];
     }
 }
