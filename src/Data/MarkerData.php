@@ -129,7 +129,7 @@ class MarkerData implements Arrayable
             ...$this->color ? ['color' => $this->color] : [],
             ...$this->url ? ['url' => $this->url, 'shouldOpenUrlInNewTab' => $this->shouldOpenUrlInNewTab] : [],
             ...$this->popupText ? ['popupText' => $this->popupText] : [],
-            ...$this->extraProperties
+            ...$this->extraProperties,
         ];
     }
 }
