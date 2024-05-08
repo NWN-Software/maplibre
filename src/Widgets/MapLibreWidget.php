@@ -7,6 +7,8 @@ use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
+use Filament\Infolists\Infolist;
+use Filament\Support\Enums\MaxWidth;
 use Filament\Widgets\Widget;
 use NWNSoftware\Maplibre\Actions;
 
@@ -57,8 +59,10 @@ class MapLibreWidget extends Widget implements HasActions, HasForms
         return Actions\ViewAction::make();
     }
 
-    public function getInfolistSchema(): array {
-        return [];
+    public function getInfolistSchema(Infolist $infolist): Infolist {
+        return $infolist
+            ->schema([
+            ]);
     }
 
     public function getFormSchema(): array {

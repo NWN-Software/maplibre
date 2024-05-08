@@ -7,7 +7,7 @@ export default function maplibre({
     style,
     center,
     zoom,
-    allowFullscreen
+    allowFullscreen,
 }) {
     let map = null;
 
@@ -16,6 +16,7 @@ export default function maplibre({
             this.createMap();
 
             this.$wire.getMarkers().then((markers) => {
+                console.log(markers);
                 this.addMarkers(markers);
             });
 
@@ -44,7 +45,8 @@ export default function maplibre({
             draggable,
             color,
             url,
-            shouldOpenUrlInNewTab
+            shouldOpenUrlInNewTab,
+            popupText
         }) {
             const marker = new Marker({
                 id: id,
@@ -53,6 +55,15 @@ export default function maplibre({
             })
                 .setLngLat(coordinates)
                 .addTo(map);
+
+            if (popupText) {
+                const popup = new Popup()
+                    .setHTML(popupText);
+
+                marker.setPopup(popup);
+
+                return;
+            }
 
             // Add click event
             marker.getElement().addEventListener('click', (event) => {
