@@ -24,6 +24,10 @@ class MarkerData implements Arrayable
 
     protected bool $shouldOpenUrlInNewTab = false;
 
+    protected ?string $avatarUrl = null;
+
+    protected int $avatarIconSize = 40;
+
     public static function make(): static
     {
         return new static();
@@ -120,6 +124,26 @@ class MarkerData implements Arrayable
         return $this;
     }
 
+    /**
+     * The URL of the avatar that will be shown on the marker.
+     */
+    public function avatarUrl(?string $avatarUrl): static
+    {
+        $this->avatarUrl = $avatarUrl;
+
+        return $this;
+    }
+
+    /**
+     * The size of the avatar icon.
+     */
+    public function avatarIconSize(int $avatarIconSize): static
+    {
+        $this->avatarIconSize = $avatarIconSize;
+
+        return $this;
+    }
+
     public function toArray(): array
     {
         return [
@@ -129,6 +153,7 @@ class MarkerData implements Arrayable
             ...$this->color ? ['color' => $this->color] : [],
             ...$this->url ? ['url' => $this->url, 'shouldOpenUrlInNewTab' => $this->shouldOpenUrlInNewTab] : [],
             ...$this->popupText ? ['popupText' => $this->popupText] : [],
+            ...$this->avatarUrl ? ['avatarUrl' => $this->avatarUrl, 'avatarIconSize' => $this->avatarIconSize] : [],
             ...$this->extraProperties
         ];
     }

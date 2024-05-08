@@ -16,7 +16,6 @@ export default function maplibre({
             this.createMap();
 
             this.$wire.getMarkers().then((markers) => {
-                console.log(markers);
                 this.addMarkers(markers);
             });
 
@@ -46,12 +45,23 @@ export default function maplibre({
             color,
             url,
             shouldOpenUrlInNewTab,
-            popupText
+            popupText,
+            avatarIconSize,
+            avatarUrl,
         }) {
+            console.log(avatarIconSize);
+            const el = document.createElement('div');
+            if (avatarUrl) {
+                el.style.backgroundImage = `url(${avatarUrl})`;
+                el.style.width = `${avatarIconSize}px`;
+                el.style.height = `${avatarIconSize}px`;
+            }
+
             const marker = new Marker({
                 id: id,
                 draggable: draggable,
-                color: color
+                color: color,
+                ...(avatarUrl ? {element: el} : {})
             })
                 .setLngLat(coordinates)
                 .addTo(map);
