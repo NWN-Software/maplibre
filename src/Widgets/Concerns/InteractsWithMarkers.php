@@ -2,15 +2,14 @@
 
 namespace NWNSoftware\Maplibre\Widgets\Concerns;
 
-trait InteractsWithMarkers {
-
-
+trait InteractsWithMarkers
+{
     /**
      * Triggered when the user clicks an event.
-     * @param array $event An Event Object that holds information about the event (date, title, etc).
-     * @return void
+     *
+     * @param  array  $event  An Event Object that holds information about the event (date, title, etc).
      */
-    public function onEventClick(int|string $id): void
+    public function onEventClick(int | string $id): void
     {
         if ($this->getModel()) {
             $this->record = $this->resolveRecord($id);
@@ -21,5 +20,4 @@ trait InteractsWithMarkers {
         ]);
 
     }
-
 }
