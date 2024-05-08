@@ -9,7 +9,6 @@ use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Facades\FilamentIcon;
 use Illuminate\Filesystem\Filesystem;
 use Livewire\Features\SupportTesting\Testable;
-use NWNSoftware\Maplibre\Commands\MaplibreCommand;
 use NWNSoftware\Maplibre\Testing\TestsMaplibre;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
@@ -112,7 +111,6 @@ class MaplibreServiceProvider extends PackageServiceProvider
     protected function getCommands(): array
     {
         return [
-            MaplibreCommand::class,
         ];
     }
 

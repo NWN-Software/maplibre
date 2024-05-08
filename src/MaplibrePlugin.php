@@ -9,11 +9,7 @@ class MaplibrePlugin implements Plugin
 {
     public ?string $style = null;
 
-    public ?string $locale = null;
-
-    public array $center = [];
-
-    public int $zoom = 5;
+    public ?string $locale = 'nl';
 
     public ?string $container = null;
 
@@ -43,30 +39,6 @@ class MaplibrePlugin implements Plugin
         $plugin = filament(app(static::class)->getId());
 
         return $plugin;
-    }
-
-    public function zoom(int $zoom): static
-    {
-        $this->zoom = $zoom;
-
-        return $this;
-    }
-
-    public function getZoom(): int
-    {
-        return $this->zoom;
-    }
-
-    public function center(array $center): static
-    {
-        $this->center = $center;
-
-        return $this;
-    }
-
-    public function getCenter(): array
-    {
-        return $this->center;
     }
 
     public function style(string $style): static

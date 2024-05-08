@@ -12,8 +12,9 @@
                 locale: @js($plugin->getLocale()),
                 container: @js($this->getId()),
                 style: @js($plugin->getStyle()),
-                center: @js($plugin->getCenter()),
-                zoom: @js($plugin->getZoom()),
+                center: @js($this->getCenter()),
+                zoom: @js($this->getZoom()),
+                allowFullscreen: @js($this->getAllowFullscreen()),
             })">
 
             <div id="{{ $this->getId() }}" class="w-full h-screen" x-ref="map"></div>

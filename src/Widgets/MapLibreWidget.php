@@ -8,34 +8,40 @@ use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Widgets\Widget;
 
-class MapLibreWidget extends Widget implements HasActions, HasForms
+class MapLibreWidget extends Widget implements HasForms, HasActions
 {
-    use InteractsWithActions;
     use InteractsWithForms;
+    use InteractsWithActions;
+    use Concerns\InteractsWithRecords;
+    use Concerns\InteractsWithMarkers;
 
     protected static string $view = 'maplibre::maplibre';
 
     protected int | string | array $columnSpan = 'full';
 
-    protected function headerActions(): array
-    {
-        return [
-        ];
-    }
+    protected array $center = [0, 0];
 
-    protected function modalActions(): array
-    {
-        return [
-        ];
-    }
+    protected int $zoom = 5;
 
-    public function fetchEvents(array $info): array
-    {
+    protected bool $allowFullscreen = true;
+
+    public function getMarkers(): array {
         return [];
     }
 
-    public function getFormSchema(): array
-    {
+    public function getAvatars(): array {
         return [];
+    }
+
+    protected function getCenter(): array {
+        return $this->center;
+    }
+
+    protected function getZoom(): int {
+        return $this->zoom;
+    }
+
+    protected function getAllowFullscreen(): bool {
+        return $this->allowFullscreen;
     }
 }
