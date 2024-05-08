@@ -19,6 +19,7 @@ trait InteractsWithMarkers {
         $this->mountAction('view', [
             'type' => 'click',
         ]);
+
     }
 
 }

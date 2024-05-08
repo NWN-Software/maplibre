@@ -2,11 +2,13 @@
 
 namespace NWNSoftware\Maplibre\Widgets;
 
+use Filament\Actions\Action;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Widgets\Widget;
+use NWNSoftware\Maplibre\Actions;
 
 class MapLibreWidget extends Widget implements HasForms, HasActions
 {
@@ -43,5 +45,18 @@ class MapLibreWidget extends Widget implements HasForms, HasActions
 
     protected function getAllowFullscreen(): bool {
         return $this->allowFullscreen;
+    }
+
+    protected function viewAction(): Action
+    {
+        return Actions\ViewAction::make();
+    }
+
+    public function getInfolistSchema(): array {
+        return [];
+    }
+
+    public function getFormSchema(): array {
+        return [];
     }
 }

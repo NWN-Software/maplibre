@@ -20,6 +20,10 @@ class MarkerData implements Arrayable {
 
     protected ?string $url = null;
 
+    protected ?string $popupTitle = null;
+
+    protected ?string $popupDescription = null;
+
     protected bool $shouldOpenUrlInNewTab = false;
 
     public static function make(): static
@@ -108,6 +112,27 @@ class MarkerData implements Arrayable {
         return $this;
     }
 
+    /**
+     * The title of the popup that will be shown when the marker is clicked.
+     */
+    public function popupTitle(string $popupTitle): static
+    {
+        $this->popupTitle = $popupTitle;
+
+        return $this;
+    }
+
+    /**
+     * The description of the popup that will be shown when the marker is clicked.
+     */
+    public function popupDescription(string $popupDescription): static
+    {
+        $this->popupDescription = $popupDescription;
+
+        return $this;
+    }
+
+
     public function toArray(): array {
         return [
             'id' => $this->id,
@@ -115,6 +140,8 @@ class MarkerData implements Arrayable {
             'draggable' => $this->draggable,
             ...$this->color ? ['color' => $this->color] : [],
             ...$this->url ? ['url' => $this->url, 'shouldOpenUrlInNewTab' => $this->shouldOpenUrlInNewTab] : [],
+            ...$this->popupTitle ? ['popupTitle' => $this->popupTitle] : [],
+            ...$this->popupDescription ? ['popupDescription' => $this->popupDescription] : [],
             ...$this->extraProperties
         ];
     }
