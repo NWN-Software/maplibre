@@ -4,9 +4,9 @@ namespace NWNSoftware\Maplibre\Data;
 
 use Illuminate\Contracts\Support\Arrayable;
 
-class MarkerData implements Arrayable {
-
-    protected int|string $id;
+class MarkerData implements Arrayable
+{
+    protected int | string $id;
 
     protected ?string $color = null;
 
@@ -30,7 +30,7 @@ class MarkerData implements Arrayable {
     /**
      * A unique identifier of an event.
      */
-    public function id(int|string $id): static
+    public function id(int | string $id): static
     {
         $this->id = $id;
 
@@ -108,14 +108,15 @@ class MarkerData implements Arrayable {
         return $this;
     }
 
-    public function toArray(): array {
+    public function toArray(): array
+    {
         return [
             'id' => $this->id,
             'coordinates' => [$this->longitude, $this->latitude],
             'draggable' => $this->draggable,
             ...$this->color ? ['color' => $this->color] : [],
             ...$this->url ? ['url' => $this->url, 'shouldOpenUrlInNewTab' => $this->shouldOpenUrlInNewTab] : [],
-            ...$this->extraProperties
+            ...$this->extraProperties,
         ];
     }
 }

@@ -8,12 +8,12 @@ use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Widgets\Widget;
 
-class MapLibreWidget extends Widget implements HasForms, HasActions
+class MapLibreWidget extends Widget implements HasActions, HasForms
 {
-    use InteractsWithForms;
-    use InteractsWithActions;
-    use Concerns\InteractsWithRecords;
     use Concerns\InteractsWithMarkers;
+    use Concerns\InteractsWithRecords;
+    use InteractsWithActions;
+    use InteractsWithForms;
 
     protected static string $view = 'maplibre::maplibre';
 
@@ -25,23 +25,28 @@ class MapLibreWidget extends Widget implements HasForms, HasActions
 
     protected bool $allowFullscreen = true;
 
-    public function getMarkers(): array {
+    public function getMarkers(): array
+    {
         return [];
     }
 
-    public function getAvatars(): array {
+    public function getAvatars(): array
+    {
         return [];
     }
 
-    protected function getCenter(): array {
+    protected function getCenter(): array
+    {
         return $this->center;
     }
 
-    protected function getZoom(): int {
+    protected function getZoom(): int
+    {
         return $this->zoom;
     }
 
-    protected function getAllowFullscreen(): bool {
+    protected function getAllowFullscreen(): bool
+    {
         return $this->allowFullscreen;
     }
 }
