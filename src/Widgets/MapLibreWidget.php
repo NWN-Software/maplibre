@@ -65,7 +65,8 @@ class MapLibreWidget extends Widget implements HasActions, HasForms
             ]);
     }
 
-    public function getFormSchema(): array {
+    public function getFormSchema(): array
+    {
         return [];
     }
 }

@@ -120,8 +120,8 @@ class MarkerData implements Arrayable
         return $this;
     }
 
-
-    public function toArray(): array {
+    public function toArray(): array
+    {
         return [
             'id' => $this->id,
             'coordinates' => [$this->longitude, $this->latitude],
