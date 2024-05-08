@@ -112,7 +112,6 @@ class MarkerData implements Arrayable
         return $this;
     }
 
-<<<<<<< HEAD
     /**
      * The title of the popup that will be shown when the marker is clicked.
      */
@@ -135,23 +134,15 @@ class MarkerData implements Arrayable
 
 
     public function toArray(): array {
-=======
-    public function toArray(): array
-    {
->>>>>>> d5197e09f668da0f460d3ae18c7400b023456803
         return [
             'id' => $this->id,
             'coordinates' => [$this->longitude, $this->latitude],
             'draggable' => $this->draggable,
             ...$this->color ? ['color' => $this->color] : [],
             ...$this->url ? ['url' => $this->url, 'shouldOpenUrlInNewTab' => $this->shouldOpenUrlInNewTab] : [],
-<<<<<<< HEAD
             ...$this->popupTitle ? ['popupTitle' => $this->popupTitle] : [],
             ...$this->popupDescription ? ['popupDescription' => $this->popupDescription] : [],
             ...$this->extraProperties
-=======
-            ...$this->extraProperties,
->>>>>>> d5197e09f668da0f460d3ae18c7400b023456803
         ];
     }
 }
