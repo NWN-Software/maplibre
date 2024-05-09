@@ -15,11 +15,17 @@ export default function maplibre({
         init() {
             this.createMap();
 
-            this.$wire.getMarkers().then((markers) => {
-                this.addMarkers(markers);
+            map.on('load', () => {
+
+                this.$wire.getMarkers().then((markers) => {
+                    this.addMarkers(markers);
+                });
+
+                this.setFullscreen(allowFullscreen);
+
             });
 
-            this.setFullscreen(allowFullscreen);
+            window.addEventListener('maplibre--flyTo', ({detail}) => this.flyTo(detail[0]))
         },
 
         createMap() {
@@ -49,12 +55,17 @@ export default function maplibre({
             avatarIconSize,
             avatarUrl,
         }) {
-            console.log(avatarIconSize);
             const el = document.createElement('div');
             if (avatarUrl) {
                 el.style.backgroundImage = `url(${avatarUrl})`;
                 el.style.width = `${avatarIconSize}px`;
                 el.style.height = `${avatarIconSize}px`;
+                el.style.backgroundSize = 'cover';
+                el.style.backgroundPosition = 'center';
+                el.style.verticalAlign = 'middle';
+                el.style.borderRadius = '50%';
+                el.style.boxShadow = 'var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color)';
+                el.style.padding = '2px';
             }
 
             const marker = new Marker({
@@ -93,6 +104,12 @@ export default function maplibre({
                 map.addControl(new FullscreenControl());
             }
         },
+
+        flyTo(center) {
+            map.flyTo({
+                center: center
+            });
+        }
 
     }
 
