@@ -1,6 +1,7 @@
 <?php
 
-// config for NWNSoftware/Maplibre
 return [
+
+    'style' => env('MAPLIBRE_STYLE', 'https://demotiles.maplibre.org/style.json'),
 
 ];

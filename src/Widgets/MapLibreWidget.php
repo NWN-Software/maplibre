@@ -33,11 +33,6 @@ class MapLibreWidget extends Widget implements HasActions, HasForms
         return [];
     }
 
-    public function getAvatars(): array
-    {
-        return [];
-    }
-
     protected function getCenter(): array
     {
         return $this->center;
