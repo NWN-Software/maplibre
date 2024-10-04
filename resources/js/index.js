@@ -14,14 +14,10 @@ export default function maplibre({
     return {
         init() {
             this.createMap();
-            console.log("lmao ,zokfozekf");
 
             map.on('load', () => {
 
-
                 this.setItemsOnMap();
-
-                // this.flyTo(4.814360966314035, 50.82656269324911);
 
                 this.setFullscreen(allowFullscreen);
 
@@ -121,8 +117,6 @@ export default function maplibre({
 
             map.on('load', () => {
 
-                console.log("lmao blo");
-
                 this.setItemsOnMap();
 
                 // this.flyTo(4.814360966314035, 50.82656269324911);
@@ -138,28 +132,20 @@ export default function maplibre({
             });
 
             this.$wire.getSources().then(sources => {
-                console.log("sources", sources);
 
                 sources.forEach(source => {
-                    console.log("source", source);
                     map.addSource(source.id, {
                         'type': source.type,
                         'data': source.data
                     });
                 });
 
-                console.log("map", map.sources);
             });
             
             this.$wire.getLayers().then(layers => {
-                console.log("layers", layers);
                 layers.forEach(layer => {
-                    console.log("layer", layer);
                     map.addLayer(layer);
                 })
-
-                console.log("map", map.layers);
-
             });
         }
 
