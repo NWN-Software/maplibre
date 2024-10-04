@@ -119,8 +119,6 @@ export default function maplibre({
 
                 this.setItemsOnMap();
 
-                // this.flyTo(4.814360966314035, 50.82656269324911);
-
                 this.setFullscreen(allowFullscreen);
 
             });
