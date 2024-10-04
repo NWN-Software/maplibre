@@ -2,6 +2,4 @@
 
 namespace NWNSoftware\Maplibre;
 
-class Maplibre
-{
-}
+class Maplibre {}

@@ -56,9 +56,7 @@ class MaplibreServiceProvider extends PackageServiceProvider
         }
     }
 
-    public function packageRegistered(): void
-    {
-    }
+    public function packageRegistered(): void {}
 
     public function packageBooted(): void
     {
@@ -86,7 +84,7 @@ class MaplibreServiceProvider extends PackageServiceProvider
         }
 
         // Testing
-        Testable::mixin(new TestsMaplibre());
+        Testable::mixin(new TestsMaplibre);
     }
 
     protected function getAssetPackageName(): ?string
