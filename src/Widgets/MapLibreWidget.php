@@ -20,7 +20,7 @@ class MapLibreWidget extends Widget implements HasActions, HasForms
 
     protected static string $view = 'maplibre::maplibre';
 
-    protected int | string | array $columnSpan = 'full';
+    protected int|string|array $columnSpan = 'full';
 
     protected array $center = [0, 0];
 
@@ -29,6 +29,16 @@ class MapLibreWidget extends Widget implements HasActions, HasForms
     protected bool $allowFullscreen = true;
 
     public function getMarkers(): array
+    {
+        return [];
+    }
+
+    public function getSources(): array
+    {
+        return [];
+    }
+
+    public function getLayers(): array
     {
         return [];
     }
