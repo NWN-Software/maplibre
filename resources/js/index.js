@@ -12,6 +12,7 @@ export default function maplibre({
     let map = null;
 
     return {
+        markers: {},
         init() {
             this.createMap();
 
@@ -25,6 +26,11 @@ export default function maplibre({
 
             window.addEventListener('maplibre--flyTo', ({detail}) => this.flyTo(detail[0]))
             window.addEventListener('maplibre--updateMap', ({detail}) => this.resetMap())
+            window.addEventListener('maplibre--updateMarkers', ({detail}) => this.updateMarkers(detail[0]))
+            window.addEventListener('maplibre--deleteMarker', ({detail}) => this.deleteMarker(detail[0]))
+            window.addEventListener('maplibre--addMarker', ({detail}) => this.addMarker(detail[0]))
+            window.addEventListener('maplibre--saveMarker', ({detail}) => this.saveMarker(detail[0]))
+            window.addEventListener('maplibre--goToMarker', ({detail}) => this.goToMarker(detail[0]))
         },
 
         createMap() {
@@ -76,6 +82,8 @@ export default function maplibre({
                 .setLngLat(coordinates)
                 .addTo(map);
 
+                this.markers[id] = marker;
+
             if (popupText) {
                 const popup = new Popup()
                     .setHTML(popupText);
@@ -110,7 +118,25 @@ export default function maplibre({
             });
         },
 
+        goToMarker(markerId) {
+            console.log('goToMarker', markerId);
+            const marker = this.markers[markerId];
+
+            if (!marker) {
+                return;
+            }
+
+            const coordinates = marker.getLngLat();
+            map.flyTo({
+                center: [coordinates.lng, coordinates.lat]
+            });
+
+            marker.getElement().click();
+        },
+
         resetMap() {
+            this.markers = {};
+
             map.remove();
 
             this.createMap();
@@ -145,6 +171,31 @@ export default function maplibre({
                     map.addLayer(layer);
                 })
             });
+        },
+
+        updateMarkers(data) {
+            this.markers = {};
+            
+            map.remove();
+
+            this.createMap();
+
+            map.on('load', () => {
+                this.addMarkers(data.markers);
+            });
+        },
+
+        deleteMarker(marker) {
+            const markerToDelete = this.markers[marker.id];
+            if (markerToDelete) {
+                markerToDelete.remove();
+                delete this.markers[marker.id];
+            }
+        },
+
+        saveMarker(data) {
+            this.deleteMarker(data.marker);
+            this.addMarker(data.marker); 
         }
 
     }
