@@ -25,7 +25,7 @@ export default function maplibre({
             });
 
             window.addEventListener('maplibre--flyTo', ({detail}) => this.flyTo(detail[0]))
-            window.addEventListener('maplibre--updateMap', ({detail}) => this.resetMap())
+            window.addEventListener('maplibre--updateMap', ({detail}) => this.resetMap(detail[0]))
             window.addEventListener('maplibre--updateMarkers', ({detail}) => this.updateMarkers(detail[0]))
             window.addEventListener('maplibre--deleteMarker', ({detail}) => this.deleteMarker(detail[0]))
             window.addEventListener('maplibre--addMarker', ({detail}) => this.addMarker(detail[0]))
@@ -119,7 +119,6 @@ export default function maplibre({
         },
 
         goToMarker(markerId) {
-            console.log('goToMarker', markerId);
             const marker = this.markers[markerId];
 
             if (!marker) {
@@ -134,7 +133,7 @@ export default function maplibre({
             marker.getElement().click();
         },
 
-        resetMap() {
+        resetMap(markers=null) {
             this.markers = {};
 
             map.remove();
@@ -143,17 +142,22 @@ export default function maplibre({
 
             map.on('load', () => {
 
-                this.setItemsOnMap();
+                this.setItemsOnMap(markers ? markers.markers : null);
 
                 this.setFullscreen(allowFullscreen);
 
             });
         },
 
-        setItemsOnMap() {
-            this.$wire.getMarkers().then((markers) => {
+        setItemsOnMap(markers=null) {
+            if (markers) {
                 this.addMarkers(markers);
-            });
+            }
+            else {
+                this.$wire.getMarkers().then((markers) => {
+                    this.addMarkers(markers);
+                });
+            }
 
             this.$wire.getSources().then(sources => {
 
