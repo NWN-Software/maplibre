@@ -2,24 +2,23 @@
 
 namespace NWNSoftware\Maplibre\Widgets;
 
-use NWNSoftware\Maplibre\Widgets\Concerns\InteractsWithMarkers;
-use NWNSoftware\Maplibre\Widgets\Concerns\InteractsWithRecords;
-use NWNSoftware\Maplibre\Actions\ViewAction;
-use Filament\Schemas\Schema;
 use Filament\Actions\Action;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
+use Filament\Schemas\Schema;
 use Filament\Widgets\Widget;
-use NWNSoftware\Maplibre\Actions;
+use NWNSoftware\Maplibre\Actions\ViewAction;
+use NWNSoftware\Maplibre\Widgets\Concerns\InteractsWithMarkers;
+use NWNSoftware\Maplibre\Widgets\Concerns\InteractsWithRecords;
 
 class MapLibreWidget extends Widget implements HasActions, HasForms
 {
-    use InteractsWithMarkers;
-    use InteractsWithRecords;
     use InteractsWithActions;
     use InteractsWithForms;
+    use InteractsWithMarkers;
+    use InteractsWithRecords;
 
     protected string $view = 'maplibre::maplibre';
 

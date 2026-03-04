@@ -2,8 +2,8 @@
 
 namespace NWNSoftware\Maplibre\Actions;
 
-use Filament\Schemas\Schema;
 use Filament\Actions\ViewAction as BaseViewAction;
+use Filament\Schemas\Schema;
 use NWNSoftware\Maplibre\Widgets\MapLibreWidget;
 
 class ViewAction extends BaseViewAction
