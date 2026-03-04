@@ -2,8 +2,8 @@
 
 namespace NWNSoftware\Maplibre\Actions;
 
+use Filament\Schemas\Schema;
 use Filament\Actions\ViewAction as BaseViewAction;
-use Filament\Infolists\Infolist;
 use NWNSoftware\Maplibre\Widgets\MapLibreWidget;
 
 class ViewAction extends BaseViewAction
@@ -20,8 +20,8 @@ class ViewAction extends BaseViewAction
             fn (MapLibreWidget $livewire) => $livewire->getRecord()
         );
 
-        $this->infolist(
-            fn (MapLibreWidget $livewire, Infolist $infolist): Infolist => $livewire->getInfolistSchema($infolist)
+        $this->schema(
+            fn (MapLibreWidget $livewire, Schema $schema): Schema => $livewire->getInfolistSchema($schema)
         );
 
         $this->cancelParentActions();

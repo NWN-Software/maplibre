@@ -2,23 +2,26 @@
 
 namespace NWNSoftware\Maplibre\Widgets;
 
+use NWNSoftware\Maplibre\Widgets\Concerns\InteractsWithMarkers;
+use NWNSoftware\Maplibre\Widgets\Concerns\InteractsWithRecords;
+use NWNSoftware\Maplibre\Actions\ViewAction;
+use Filament\Schemas\Schema;
 use Filament\Actions\Action;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
-use Filament\Infolists\Infolist;
 use Filament\Widgets\Widget;
 use NWNSoftware\Maplibre\Actions;
 
 class MapLibreWidget extends Widget implements HasActions, HasForms
 {
-    use Concerns\InteractsWithMarkers;
-    use Concerns\InteractsWithRecords;
+    use InteractsWithMarkers;
+    use InteractsWithRecords;
     use InteractsWithActions;
     use InteractsWithForms;
 
-    protected static string $view = 'maplibre::maplibre';
+    protected string $view = 'maplibre::maplibre';
 
     protected int | string | array $columnSpan = 'full';
 
@@ -65,13 +68,13 @@ class MapLibreWidget extends Widget implements HasActions, HasForms
 
     protected function viewAction(): Action
     {
-        return Actions\ViewAction::make();
+        return ViewAction::make();
     }
 
-    public function getInfolistSchema(Infolist $infolist): Infolist
+    public function getInfolistSchema(Schema $schema): Schema
     {
-        return $infolist
-            ->schema([
+        return $schema
+            ->components([
             ]);
     }
 
