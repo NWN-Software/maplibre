@@ -4,8 +4,8 @@
 
 <x-filament-widgets::widget>
     <x-filament::section>
-        <div class="maplibre " wire:ignore ax-load
-            ax-load-src="{{ \Filament\Support\Facades\FilamentAsset::getAlpineComponentSrc('maplibre-alpine', 'nwn-software/maplibre') }}"
+        <div class="maplibre " wire:ignore x-load
+            x-load-src="{{ \Filament\Support\Facades\FilamentAsset::getAlpineComponentSrc('maplibre-alpine', 'nwn-software/maplibre') }}"
             ax-load-css="{{ \Filament\Support\Facades\FilamentAsset::getStyleHref('maplibre-styles', 'nwn-software/maplibre') }}"
             x-ignore x-data="maplibre({
                 locale: @js($plugin->getLocale()),
